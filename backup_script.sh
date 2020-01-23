@@ -1,3 +1,4 @@
+echo Test 1
 echo Enter the name of your project
 read NAME
 echo Are you sure $NAME is the name you want to use? [yes/no]
@@ -8,7 +9,6 @@ read varnameconfirm
 	else
 		exit 1;
 	fi
-		
 echo Enter the user you want to use at your remote server
 read USER
 echo Are you sure $USER is the user you want to use? [yes/no]
@@ -35,7 +35,7 @@ read timekeepconfirm
 		echo Writing ...
 	else
 		exit 1;
-	fi 
+	fi
 
 
 echo Starting to create remoteruntime
@@ -44,10 +44,11 @@ read PATHREMOTE
 echo Are you sure $PATHREMOTE is the correct path? [yes/no]
 read varconfirmpathremote
 	if [ "$varconfirmpathremote" = "yes" ]; then
-		echo Loading.. 
+		echo Loading..
 	else
 		exit 3;
 	fi
+
 echo '2. Enter the user the remoteserver should use to connect to your local server'
 read USERLOCAL
 echo Is $USERLOCAL the correct user? [yes/no]
@@ -86,7 +87,7 @@ echo Attempting to transfer files
 echo rsync -avzhe ssh --progress "$NAME"_backup.tar.gz $USERLOCAL@$DOMAINLOCAL:$PATHLOCAL
 echo Transfer successfull
 echo Removing sourcefile
-echo rm "$NAME"_backup.tar.gz 
+echo rm "$NAME"_backup.tar.gz
 echo Remoteruntime done
 EOF
 
@@ -156,9 +157,9 @@ LOG30=$PATHLOCAL/log_30.txt
 
 cat > backup.sh <<EOF
 echo 'Starting backup process'
-	if [ -f "$FILE30" ]; then 
+	if [ -f "$FILE30" ]; then
 		echo Old File exists, purging!
-		rm "$NAME"_backup.tar.gz 
+		rm "$NAME"_backup.tar.gz
 	fi
 	if [ -f "$FILE29" ]; then
 		mv "$NAME"_backup_29.tar.gz "$NAME"_backup_30.tar.gz
@@ -250,12 +251,12 @@ echo 'Starting backup process'
 	if [ -f "$FILE" ]; then
 		mv "$NAME"_backup.tar.gz "$NAME"_backup_1.tar.gz
 	fi
-	
+
 echo Taking care of logs ...
 
-	if [ -f "$LOG30" ]; then 
+	if [ -f "$LOG30" ]; then
 		echo Old Logfile exists, purging!
-		rm log_30.tar.gz 
+		rm log_30.tar.gz
 	fi
 	if [ -f "$LOG29" ]; then
 		mv log_29.tar.gz log_30.tar.gz
@@ -327,7 +328,7 @@ echo Taking care of logs ...
 		mv log_7.tar.gz log_8.tar.gz
 	fi
 	if [ -f "$LOG6" ]; then
-		mv log_6.tar.gz log_7.tar.gz
+		mv log_6.tar.gz log_7.tar.gzs
 	fi
 	if [ -f "$LOG5" ]; then
 		mv log_5.tar.gz log_6.tar.gz
@@ -347,7 +348,7 @@ echo Taking care of logs ...
 	if [ -f "$LOG" ]; then
 		mv log_latest.txt log_1.tar.gz
 	fi
-	
+
 find -type f -name '"$NAME"_backup_$TIMEKEEP.tar.gz' -delete
 find -type f -name 'Log_$TIMEKEEP.txt'
 
