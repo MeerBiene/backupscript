@@ -1,5 +1,5 @@
 echo Test 1
-echo Enter the name of your project
+echo Enter the name of your project. This is the name all your backup files will have.
 read NAME
 echo Are you sure $NAME is the name you want to use? [yes/no]
 read varnameconfirm
