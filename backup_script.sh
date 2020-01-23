@@ -226,7 +226,7 @@ echo 'Starting backup process'
 		echo Old File exists, purging!
 		rm "$NAME"_backup.tar.gz
 	fi
-	if [ -f "$FILE29" ]; then
+	if [ -f ""$NAME"_backup_29.tar.gz" ]; then
 		mv "$NAME"_backup_29.tar.gz "$NAME"_backup_30.tar.gz
 	fi
 	if [ -f "$FILE28" ]; then
